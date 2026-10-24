@@ -19,6 +19,6 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       <div className="sidebar-note"><span className="small-label">UNA PRÁCTICA CON PROPÓSITO</span><p>Guardar lo necesario.<br />Entender lo que implica.</p><span className="note-rule" /><small>Ronal Condor Blas<br />2026</small></div>
       <a className="source-link" href="https://github.com/ronaljcb/lab11-registro-privacidad" target="_blank" rel="noreferrer">Ver repositorio <ArrowUpRight size={15} /></a>
     </aside>
-    <div className="workspace"><header className="topbar"><span>Laboratorio 11 <span className="breadcrumb-slash">/</span> {navigation.find((n) => n.href === pathname)?.label ?? "Registro"}</span><span className="environment"><i />Entorno de demostración</span></header><main id="contenido" className="main-content">{children}</main><footer className="app-footer"><span>DS3031 · Ética y Seguridad de los Datos</span><span>Datos ficticios. Decisiones conscientes.</span></footer></div>
+    <div className="workspace"><header className="topbar"><span>Laboratorio 11 <span className="breadcrumb-slash">/</span> {navigation.find((n) => n.href === pathname)?.label ?? "Registro"}</span><span className="environment"><i />Demostración complementaria</span></header><main id="contenido" className="main-content">{children}</main><footer className="app-footer"><span>DS3031 · Ética y Seguridad de los Datos</span><span>Datos ficticios. Decisiones conscientes.</span></footer></div>
   </div>;
 }

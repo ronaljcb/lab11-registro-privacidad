@@ -1,8 +1,25 @@
 import type { Metadata } from "next";
 import { ArrowDownToLine, ArrowUpRight, FileText, FolderGit2, ListChecks } from "lucide-react";
+
 export const metadata: Metadata = { title: "Documentación" };
+
+const documents = [
+  { href: "/documentos/dpia-laboratorio-11.docx", label: "EVALUACIÓN · WORD", title: "Ficha DPIA del laboratorio", description: "Plantilla original, inventario, ocho riesgos y restricciones propuestas.", icon: FileText, download: true },
+  { href: "https://github.com/ronaljcb/lab11-registro-privacidad/tree/main/laboratorio-minimo", label: "BACKEND EVALUADO · GITHUB", title: "Registro mínimo en Flask y SQLite", description: "Código local y observaciones reproducibles de sus brechas de privacidad.", icon: FolderGit2, download: false },
+  { href: "https://github.com/ronaljcb/lab11-registro-privacidad/blob/main/docs/checklist.md", label: "VERIFICACIÓN · DOCUMENTO", title: "Checklist del trabajo", description: "Estado actual, restricciones por escrito y criterios de comprobación.", icon: ListChecks, download: false },
+];
+
 export default function DeliveryPage() {
-  return <><div className="page-heading"><div><p className="eyebrow">03 <span /> EL TRABAJO DOCUMENTADO</p><h1>Del registro<br />a la evaluación<span>.</span></h1><p className="page-description">Implementación, decisiones y evidencia en un mismo lugar.</p></div></div>
-  <div className="document-list"><a href="/documentos/informe-laboratorio-11.pdf" target="_blank" rel="noreferrer" className="document-row"><span className="document-icon"><FileText size={24} strokeWidth={1.4} /></span><div><span className="small-label">INFORME ACADÉMICO · PDF</span><h2>Informe y evaluación de impacto</h2><p>Inventario, necesidad, riesgos, restricciones y decisión final.</p></div><ArrowDownToLine size={21} /></a><a href="https://github.com/ronaljcb/lab11-registro-privacidad" target="_blank" rel="noreferrer" className="document-row"><span className="document-icon"><FolderGit2 size={24} strokeWidth={1.4} /></span><div><span className="small-label">CÓDIGO FUENTE · GITHUB</span><h2>Repositorio del proyecto</h2><p>Frontend, API, migración SQL e instrucciones de ejecución.</p></div><ArrowUpRight size={21} /></a><a href="https://github.com/ronaljcb/lab11-registro-privacidad/blob/main/docs/checklist.md" target="_blank" rel="noreferrer" className="document-row"><span className="document-icon"><ListChecks size={24} strokeWidth={1.4} /></span><div><span className="small-label">VERIFICACIÓN · DOCUMENTO</span><h2>Checklist y pruebas</h2><p>Comprobaciones técnicas y requisitos de la entrega.</p></div><ArrowUpRight size={21} /></a></div>
-  <div className="delivery-note"><p className="small-label">REVISIÓN CRUZADA</p><h2>Una mirada externa sigue siendo necesaria.</h2><p>La revisión de otro grupo queda pendiente. El repositorio incluye un formato para registrar sus observaciones cuando se realice. Las pruebas técnicas no reemplazan esa revisión.</p></div><div className="delivery-meta"><span>Responsable<br /><strong>Ronal Condor Blas</strong></span><span>Curso<br /><strong>DS3031</strong></span><span>Alcance<br /><strong>Demostración académica</strong></span></div></>;
+  return <>
+    <div className="page-heading"><div><p className="eyebrow">03 <span /> EL TRABAJO DOCUMENTADO</p><h1>Del registro<br />a la evaluación<span>.</span></h1><p className="page-description">El backend del ejercicio, sus riesgos y la ficha de evaluación.</p></div></div>
+    <div className="document-list">{documents.map(({ href, label, title, description, icon: Icon, download }) =>
+      <a key={href} href={href} target="_blank" rel="noreferrer" className="document-row">
+        <span className="document-icon"><Icon size={24} strokeWidth={1.4} /></span>
+        <div><span className="small-label">{label}</span><h2>{title}</h2><p>{description}</p></div>
+        {download ? <ArrowDownToLine size={21} /> : <ArrowUpRight size={21} />}
+      </a>
+    )}</div>
+    <div className="delivery-note"><p className="small-label">ALCANCE DE LA EVALUACIÓN</p><h2>Las brechas son el punto de partida.</h2><p>La DPIA evalúa el backend local de Flask y SQLite, siguiendo las diapositivas del laboratorio. Sus restricciones se proponen por escrito. Esta aplicación publicada es una demostración complementaria con controles adicionales; esos controles no se atribuyen al backend evaluado.</p></div>
+    <div className="delivery-meta"><span>Autor<br /><strong>Ronal Condor Blas</strong></span><span>Curso<br /><strong>DS3031</strong></span><span>Evaluación<br /><strong>Backend mínimo local</strong></span></div>
+  </>;
 }

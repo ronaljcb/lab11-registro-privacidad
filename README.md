@@ -1,106 +1,39 @@
-# Registro de personas · Laboratorio 11
+# Laboratorio 11 Evaluación de impacto en privacidad
 
-Aplicación académica para registrar personas ficticias y evaluar los riesgos de privacidad del sistema. Trabajo de DS3031, Ética y Seguridad de los Datos.
+Ronal Condor Blas · DS3031 Ética y Seguridad de los Datos
 
-**Responsable:** Ronal Condor Blas.
+La DPIA evalúa el **backend mínimo local de Flask y SQLite** de [laboratorio-minimo](laboratorio-minimo), siguiendo las diapositivas 20–29 de L11. Ese backend conserva las brechas de privacidad que se deben identificar. Las ocho restricciones C01–C08 se proponen por escrito y no están implementadas en él.
 
-- Aplicación: https://lab11-registro-privacidad.vercel.app
-- Informe PDF: [Informe y DPIA](public/documentos/informe-laboratorio-11.pdf)
-- Fuente LaTeX: [main.tex](docs/informe-latex/main.tex)
-- [Arquitectura](docs/arquitectura.md) · [Checklist propio](docs/checklist.md) · [Revisión cruzada pendiente](docs/revision-cruzada.md)
+## Entrega
 
-## Qué incluye
+- [Ficha DPIA en Word con el diseño original](docs/DPIA_Laboratorio_11.docx)
+- [Backend evaluado e instrucciones](laboratorio-minimo/README.md)
+- [Evidencia reproducible](laboratorio-minimo/evidencias.json)
+- [Checklist propio basado en la presentación](docs/checklist.md)
+- [Formulario de revisión cruzada](docs/revision-cruzada.md)
 
-Registro, listado, búsqueda y eliminación de personas. Interfaz adaptable con componentes shadcn/ui, aviso de privacidad y documentación. La API guarda los datos en PostgreSQL de Neon, con acceso delimitado por sesión del navegador.
+La ficha contiene inventario, necesidad y proporcionalidad, ocho riesgos actuales, restricciones verificables, riesgo residual esperado y decisión condicionada. Los apartados de consulta externa se conservan en blanco.
 
-El correo debe terminar en `@example.com`. El teléfono es opcional y solo admite nueve dígitos que empiecen con `000`. Usa nombres inventados. La aplicación no envía correos ni mensajes.
-
-## Ejecutar localmente
-
-Requisitos: Node.js 22 o superior, npm y una base PostgreSQL en Neon.
-
-```sh
-npm ci
-```
-
-Copia `.env.example` a `.env.local` y configura las conexiones de tu base de datos. La credencial pertenece exclusivamente al servidor; no uses un prefijo `NEXT_PUBLIC_`.
-
-```sh
-npm run db:migrate
-npm run dev
-```
-
-Abre http://localhost:3000. Para probar la compilación de producción:
-
-```sh
-npm run build
-npm start
-```
-
-## API
-
-| Método | Ruta | Función |
-| --- | --- | --- |
-| GET | `/api/personas` | Inicia o recupera una sesión y lista sus registros vigentes. |
-| POST | `/api/personas` | Registra una persona ficticia en la sesión actual. |
-| DELETE | `/api/personas/:id` | Elimina un registro perteneciente a la sesión. |
-| GET | `/api/health` | Comprueba la conexión con PostgreSQL. |
-
-Ejemplo de cuerpo POST:
-
-```json
-{
-  "firstName": "Lucía",
-  "lastName": "Torres",
-  "email": "lucia.torres@example.com",
-  "phone": "000000101",
-  "demoAcknowledged": true
-}
-```
-
-Para clientes de API, primero realiza GET y conserva la cookie. Las mutaciones requieren la cabecera `Origin` con el origen exacto del servicio. El listado no utiliza caché compartida.
-
-## Verificación
-
-```sh
-npm run typecheck
-npm run lint
-npm run build
-```
-
-Con el servidor iniciado, ejecuta las doce comprobaciones de API. `BASE_URL` permite seleccionar el servidor, sin modificar el script. Por defecto utiliza http://localhost:3111.
+## Cómo observar el sistema
 
 ```powershell
-$env:BASE_URL = 'http://localhost:3000'
-npm run test:api
+cd laboratorio-minimo
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe verificar.py
+.\.venv\Scripts\python.exe app.py
 ```
 
-El script comprueba persistencia, aislamiento entre sesiones, validación, duplicados, origen, límite de solicitudes y eliminación. Crea exclusivamente registros ficticios y elimina los registros que crea.
+POST `/registro` almacena nombres, apellidos, correo y teléfono opcional. GET `/registros` entrega todos los registros sin autenticar. La inserción usa parámetros SQL. Se emplean exclusivamente valores inventados y el servidor escucha en `127.0.0.1:5111`.
 
-## Conservación y limpieza
+`verificar.py` crea cuatro personas ficticias en una base temporal y observa acceso desde otro cliente, exposición de contactos, duplicados, correo inválido, almacenamiento legible y ausencia de edición y borrado. Añade tres entradas de prueba específicas y elimina la base al terminar. No se incluyen bases de datos ni credenciales en Git.
 
-Las sesiones vencen a las 24 horas; los datos vencidos dejan de estar disponibles por la API. La limpieza física no está programada automáticamente:
+## Decisión de la DPIA
 
-```sh
-npm run db:cleanup
-```
+El backend actual es un ejercicio local con datos inventados. Un lanzamiento con datos reales requiere implementar y verificar C01–C08. La valoración residual del Word es una estimación posterior a esas propuestas; las puntuaciones actuales siguen siendo las de Step 5. El riesgo de copia y compromiso del equipo o sus claves requiere una nueva revisión antes de operar.
 
-El comando elimina sesiones vencidas y sus registros por cascada. No elimina copias de respaldo del proveedor. Perder la cookie impide volver a acceder a esa sesión; el sistema no incluye recuperación de identidad.
+## Demostración complementaria
 
-## Despliegue
+La [aplicación publicada](https://lab11-registro-privacidad.vercel.app) utiliza Next.js, shadcn/ui, Vercel y Neon. Tiene controles adicionales y se mantiene como demostración opcional. Sus controles no se usan para valorar el backend mínimo. [Instrucciones de esta versión](docs/demostracion-complementaria.md).
 
-El proyecto está preparado para Vercel con la integración Neon del plan gratuito. Configura `DATABASE_URL` en el servidor, aplica la migración y despliega con el directorio raíz de este repositorio. No subas `.env.local`, `.vercel`, archivos `.db`, `.sqlite` ni volcados de la base.
-
-## Compilar el informe
-
-El informe utiliza XeLaTeX y Times New Roman. La fuente está en `docs/informe-latex`; la imagen de evidencia se conserva en su subdirectorio `images`.
-
-```sh
-cd docs/informe-latex
-xelatex -interaction=nonstopmode -halt-on-error main.tex
-xelatex -interaction=nonstopmode -halt-on-error main.tex
-```
-
-## Estado académico
-
-La DPIA incluye inventario, necesidad, diez riesgos, restricciones verificables, valoración residual y decisión. La publicación se limita a una demostración con datos ficticios. La revisión de otro grupo sigue pendiente. El checklist incluido es una verificación propia; debe cotejarse con el checklist oficial del curso y con su plantilla original, que no se adjuntaron. La modalidad individual requiere la aceptación del docente.
+El PDF y la fuente LaTeX de la primera versión documentan esa demostración. Se conservan como material anterior; la entrega vigente es el Word enlazado arriba.

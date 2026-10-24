@@ -1,38 +1,35 @@
-# Verificación de la entrega
+# Checklist del laboratorio
 
-DS3031 · Laboratorio 11 · Ronal Condor Blas · 24 de octubre de 2026.
+Matriz propia basada en las diapositivas 20–29 de L11. Evalúa exclusivamente `laboratorio-minimo`. Las restricciones C01–C08 se desarrollan por escrito.
 
-Esta es una verificación propia basada en las diapositivas 20–29 del laboratorio. No reemplaza el checklist oficial del curso, que no fue adjuntado.
-
-| Requisito | Evidencia | Estado |
+| Elemento del encargo | Evidencia | Resultado |
 | --- | --- | --- |
-| Base de datos y backend mínimo | `database/001_initial.sql`, `src/app/api/personas` | Implementado |
-| Alta y listado de nombres, apellidos, correo y teléfono | API y formulario; teléfono opcional | Verificado |
-| Frontend opcional | Next.js, shadcn/ui; vistas de registro, privacidad y documentación | Implementado |
-| Inventario y necesidad | Informe, secciones 1 y 2 | Incluido |
-| Al menos cinco riesgos concretos | Diez riesgos en la sección 3 | Incluido |
-| Restricción verificable por riesgo alto o medio | C1–C10, sección 4 | Incluido |
-| Riesgo residual y decisión con responsable | Sección 5 | Incluido |
-| Repositorio sin base de datos ni credenciales | `.gitignore` y revisión de archivos seguidos | Verificado |
-| Persistencia e independencia entre sesiones | `scripts/verify-api.mjs` | 12 comprobaciones satisfactorias en local y Vercel |
-| Compilación, TypeScript y ESLint | `npm run build`, `npm run typecheck`, `npm run lint` | Satisfactorios |
-| Revisión recibida de otro grupo | `docs/revision-cruzada.md` | Pendiente |
-| Checklist oficial y plantilla original | No adjuntos en los materiales recibidos | Pendiente de cotejo |
-| Autorización de trabajo individual | A cargo del docente | No acreditada |
+| Backend con base persistente | app.py, Flask y SQLite | Implementado |
+| Nombres, apellidos, correo y teléfono | POST /registro; teléfono opcional | Verificado |
+| SQL parametrizado | INSERT con cuatro parámetros y prueba de cadena SQL literal | Verificado |
+| Tres o cuatro personas inventadas | Cuatro registros iniciales en verificar.py | Verificado |
+| Listado completo y observación de brechas | Segundo cliente anónimo obtiene todos los contactos | Verificado |
+| Inventario: campo, finalidad, obligatoriedad, base, retención, acceso y necesidad | Introducción y Step 2 del Word | Incluido, con estado actual diferenciado de propuesta |
+| Al menos cinco riesgos concretos | R1–R8, Step 5 | Ocho riesgos actuales |
+| Restricción por cada riesgo medio o alto | C01–C08, Step 6 | Ocho propuestas sin implementar |
+| Capa, prioridad y prueba | Cada restricción identifica capa y criterio; prioridad antes de datos reales | Incluido |
+| Revalorar al aplicar restricciones en papel | Step 6 | Residual esperado, no controles existentes |
+| Decisión coherente | Step 7 | Lanzamiento condicionado a implementar y verificar C01–C08 |
+| Nombre y fecha en casillas originales | Step 7 | Ronal Condor Blas; viernes 23 de octubre de 2026 |
+| Repositorio sin bases ni credenciales | .gitignore y revisión de archivos seguidos | Verificado |
+| Revisión de otro grupo | Formulario y casillas originales | |
 
-## Pruebas reproducibles
+## Privacidad del backend actual
 
-1. Cookie de sesión y respuestas sin caché compartida.
-2. Alta persistente en PostgreSQL.
-3. Lectura posterior del registro.
-4. Otra sesión no lista ni elimina registros ajenos.
-5. Correo duplicado rechazado en la misma sesión.
-6. Correo ajeno a `example.com`, teléfono no ficticio y confirmación ausente rechazados.
-7. Origen externo y ausencia de sesión rechazados.
-8. JSON malformado y cuerpo mayor de 2 KB rechazados.
-9. Teléfono vacío guardado como `NULL`.
-10. Eliminación propia y lectura posterior.
-11. Solicitud 21 de mutación dentro del minuto rechazada con 429.
-12. Endpoint de salud con consulta real a la base de datos.
+| Control examinado | Estado observado | Propuesta |
+| --- | --- | --- |
+| Autenticación y autorización del listado | Ausentes | C01 |
+| Cifrado de contactos en SQLite | Ausente | C02 |
+| Minimización del teléfono | Opcional, sin necesidad demostrada | C03 |
+| Aviso completo y base documentada | Ausentes | C04 |
+| Plazo y eliminación automática | Ausentes | C05 |
+| Acceso, corrección, borrado y exportación autenticados | Ausentes | C06 |
+| Formato y unicidad del correo | No se validan | C07 |
+| Auditoría dedicada y procedimiento de incidentes | Ausentes | C08 |
 
-La comprobación visual cubre carga de ejemplos, formulario sin teléfono, búsqueda, confirmación de eliminación y navegación. El script elimina los registros ficticios que crea; deja únicamente las sesiones técnicas, que pueden limpiarse después de vencer.
+La evidencia de `laboratorio-minimo/evidencias.json` observa brechas; no certifica las restricciones propuestas. Para reproducirla, ejecutar verificar.py según el README de esa carpeta. Se usa una base temporal y datos inventados.
