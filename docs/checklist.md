@@ -14,7 +14,7 @@ Esta es una verificación propia basada en las diapositivas 20–29 del laborato
 | Restricción verificable por riesgo alto o medio | C1–C10, sección 4 | Incluido |
 | Riesgo residual y decisión con responsable | Sección 5 | Incluido |
 | Repositorio sin base de datos ni credenciales | `.gitignore` y revisión de archivos seguidos | Verificado |
-| Persistencia e independencia entre sesiones | `scripts/verify-api.mjs` | 12 comprobaciones de API satisfactorias |
+| Persistencia e independencia entre sesiones | `scripts/verify-api.mjs` | 12 comprobaciones satisfactorias en local y Vercel |
 | Compilación, TypeScript y ESLint | `npm run build`, `npm run typecheck`, `npm run lint` | Satisfactorios |
 | Revisión recibida de otro grupo | `docs/revision-cruzada.md` | Pendiente |
 | Checklist oficial y plantilla original | No adjuntos en los materiales recibidos | Pendiente de cotejo |

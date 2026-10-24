@@ -231,7 +231,7 @@ El servidor exige formatos ficticios para correo y teléfono. La aplicación no 
 \newpage
 \section{Verificación técnica y evidencia}
 \subsection{Flujo comprobado}
-La verificación recorre interfaz, API, persistencia y respuesta. El script \texttt{scripts/verify-api.mjs} ejecuta doce comprobaciones y puede repetirse contra el despliegue mediante la variable \texttt{BASE\_URL}.
+La verificación recorre interfaz, API, persistencia y respuesta. El script \texttt{scripts/verify-api.mjs} ejecuta doce comprobaciones y puede repetirse contra el despliegue mediante la variable \texttt{BASE\_URL}. Las doce comprobaciones resultaron satisfactorias tanto en el servidor local como en el despliegue público de Vercel el 24 de octubre de 2026.
 
 {\small
 \begin{tabularx}{\textwidth}{@{}P{.7cm}YP{3.2cm}@{}}
@@ -253,9 +253,19 @@ La verificación recorre interfaz, API, persistencia y respuesta. El script \tex
 \bottomrule
 \end{tabularx}}
 
-\subsection{Interfaz del registro}
-\IfFileExists{images/tabla-registro.jpg}{\begin{center}\includegraphics[width=\textwidth,height=6.1cm,keepaspectratio]{images/tabla-registro.jpg}\end{center}}{\textit{La captura de la interfaz se incorpora en la versión final del informe.}}
-{\footnotesize Figura 1. Registro con ejemplos ficticios. La interfaz utiliza componentes shadcn/ui y mantiene el teléfono como campo opcional.}
+\subsection{Contratos de la API}
+{\small
+\begin{tabularx}{\textwidth}{@{}P{1.5cm}P{4.1cm}Y@{}}
+\toprule
+\textbf{Método} & \textbf{Ruta} & \textbf{Función}\\
+\midrule
+GET & \texttt{/api/personas} & Recuperar la sesión y listar sus registros.\\
+POST & \texttt{/api/personas} & Validar y guardar una persona ficticia.\\
+DELETE & \texttt{/api/personas/:id} & Eliminar un registro de la sesión.\\
+GET & \texttt{/api/health} & Comprobar la conexión con la base.\\
+\bottomrule
+\end{tabularx}}
+Las instrucciones de ejecución y los comandos de verificación se incluyen en el README. El anexo muestra la interfaz con cuatro registros de ejemplo, sin información de personas reales.
 
 \newpage
 \section{Entrega, revisión y referencias}
@@ -294,4 +304,10 @@ El archivo \texttt{docs/revision-cruzada.md} contiene el formato para registrar 
 \item Vercel. \textit{Variables de entorno}. \url{https://vercel.com/docs/environment-variables}.
 \end{enumerate}
 {\footnotesize Documentación técnica consultada el 24 de octubre de 2026. Las referencias normativas del cuerpo se presentan como marco académico del material de clase, no como dictamen de cumplimiento.}
+\newpage
+\section*{Anexo. Interfaz de la demostración}
+\begin{center}
+\includegraphics[width=\textwidth,height=20.5cm,keepaspectratio]{images/registro.jpg}
+\end{center}
+{\footnotesize Figura 1. Vista del registro con cuatro ejemplos ficticios. La tabla muestra nombres, correos y teléfonos; un registro omite el teléfono. La captura corresponde a la comprobación de la interfaz.}
 \end{document}
