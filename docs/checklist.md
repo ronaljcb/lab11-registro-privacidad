@@ -2,6 +2,8 @@
 
 Matriz propia basada en las diapositivas 20–29 de L11. Evalúa exclusivamente `laboratorio-minimo`. Las restricciones C01–C08 se desarrollan por escrito.
 
+La [comprobación con la PPT](comprobacion-ppt.md) detalla el cotejo. La ficha tiene respuestas en español y conserva las preguntas originales en inglés. El nivel de riesgo se asigna con la matriz de la diapositiva 25, no con intervalos del producto: media × alto y alta × medio son altos; baja × alto es medio.
+
 | Elemento del encargo | Evidencia | Resultado |
 | --- | --- | --- |
 | Backend con base persistente | app.py, Flask y SQLite | Implementado |
