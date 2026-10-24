@@ -16,6 +16,8 @@ La [comprobación con la PPT](comprobacion-ppt.md) detalla el cotejo. La ficha t
 | Restricción por cada riesgo medio o alto | C01–C08, Step 6 | Ocho propuestas sin implementar |
 | Capa, prioridad y prueba | Cada restricción identifica capa y criterio; prioridad antes de datos reales | Incluido |
 | Revalorar al aplicar restricciones en papel | Step 6 | Residual esperado, no controles existentes |
+| Consulta a interesados y revisión prevista | Step 3 | Plan desarrollado con participantes, momento, objetivos y seguimiento |
+| Aprobación de las medidas | Step 6 y Step 7 | Sí para C01–C08; aprobación del diseño, con implementación exigida antes del uso real |
 | Decisión coherente | Step 7 | Lanzamiento condicionado a implementar y verificar C01–C08 |
 | Nombre y fecha en casillas originales | Step 7 | Ronal Condor Blas; viernes 23 de octubre de 2026 |
 | Repositorio sin bases ni credenciales | .gitignore y revisión de archivos seguidos | Verificado |
@@ -28,7 +30,7 @@ La [comprobación con la PPT](comprobacion-ppt.md) detalla el cotejo. La ficha t
 | Autenticación y autorización del listado | Ausentes | C01 |
 | Cifrado de contactos en SQLite | Ausente | C02 |
 | Minimización del teléfono | Opcional, sin necesidad demostrada | C03 |
-| Aviso completo y base documentada | Ausentes | C04 |
+| Aviso completo y registro de consentimiento | Ausentes en el backend; base prevista en la DPIA | C04 |
 | Plazo y eliminación automática | Ausentes | C05 |
 | Acceso, corrección, borrado y exportación autenticados | Ausentes | C06 |
 | Formato y unicidad del correo | No se validan | C07 |

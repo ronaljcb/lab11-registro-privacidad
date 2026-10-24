@@ -31,3 +31,11 @@ Se tomó `DPIA_Grupo.docx` como guía de organización y detalle: proyecto y tra
 Las respuestas describen exclusivamente nuestro backend: no tiene cuentas ni formulario web, escucha en loopback y devuelve 400 cuando falta una clave obligatoria. No se copian observaciones, revisión externa, integrantes, plazos legales o bases contractuales del otro grupo. El plazo propuesto de 30 días se justifica por evaluación y correcciones del ejercicio.
 
 Se conservan ocho riesgos propios. R3 diferencia la recopilación innecesaria del teléfono de la divulgación masiva ya valorada en R1: probabilidad alta e impacto bajo, nivel medio según la matriz del curso. Tras eliminar el campo se estima bajo. Los riesgos altos actuales son R1, R2, R4, R5 y R6. La propuesta C02 concreta AES-GCM y una prueba de rechazo de datos cifrados alterados; no está implementada.
+
+## Consulta y aprobación de diseño
+
+El paso 3 está completo: explica la consulta a titulares, la revisión prevista con otro grupo, la revisión técnica individual, la participación docente y las condiciones para consultar a proveedores. El plan no se presenta como una revisión externa ya realizada. Los campos originales para registrar comentarios recibidos siguen sin atribuir observaciones a terceros.
+
+La columna Measure approved contiene Sí en las ocho medidas. Indica aprobación como restricciones del proyecto; no equivale a implementación. El paso 7 explicita esa distinción y mantiene el lanzamiento condicionado a pruebas satisfactorias. Las respuestas usan subtítulos en negrita, y los identificadores y pruebas se distinguen dentro de las matrices.
+
+La base prevista para un eventual registro voluntario se concreta como consentimiento previo e informado, con retiro disponible. El backend actual todavía no registra ese consentimiento. La ficha enlaza la Ley 29733 como fuente de los artículos 13.5, 13.7 y 18. No se trasladan al ejercicio supuestas excepciones contractuales ni reglas de designación de DPO del documento de otro grupo.

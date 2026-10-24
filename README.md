@@ -12,7 +12,7 @@ La DPIA evalúa el **backend mínimo local de Flask y SQLite** de [laboratorio-m
 - [Checklist propio basado en la presentación](docs/checklist.md)
 - [Formulario de revisión cruzada](docs/revision-cruzada.md)
 
-La ficha contiene inventario, necesidad y proporcionalidad, ocho riesgos actuales, restricciones verificables, riesgo residual esperado y decisión condicionada. Los apartados de consulta externa se conservan en blanco.
+La ficha contiene inventario, necesidad y proporcionalidad, ocho riesgos actuales, restricciones verificables, riesgo residual esperado y decisión condicionada. El paso 3 desarrolla el plan de consulta a titulares, otro grupo, el docente y posibles proveedores. Solo los campos de comentarios externos recibidos permanecen en blanco. La columna de aprobación de C01–C08 indica Sí: se aprueban como restricciones del diseño, con implementación y pruebas exigidas antes de usar datos reales.
 
 ## Cómo observar el sistema
 
