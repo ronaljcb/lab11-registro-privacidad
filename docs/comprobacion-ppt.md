@@ -23,3 +23,11 @@ Las respuestas están en español; las preguntas, instrucciones, títulos y dise
 El texto separa observaciones del backend actual, restricciones propuestas y riesgos residuales estimados. No atribuye controles de la demostración Next.js al backend Flask. Tampoco presenta SQL parametrizado como ausente, teléfono como obligatorio, el plazo propuesto como una obligación legal ni la ficha como certificación de cumplimiento.
 
 La revisión externa no está acreditada. El checklist propio organiza la evidencia disponible; no sustituye al checklist oficial enlazado en la diapositiva 20, cuyo contenido no pudo consultarse. Por ello, este cotejo confirma la parte técnica y documental observable, sin declarar completados esos dos elementos externos.
+
+## Adaptación del documento de referencia
+
+Se tomó `DPIA_Grupo.docx` como guía de organización y detalle: proyecto y tratamiento, recolección, almacenamiento, uso, eliminación, destinatarios, flujo, expectativas y proporcionalidad. La plantilla original sigue siendo la autoridad de diseño.
+
+Las respuestas describen exclusivamente nuestro backend: no tiene cuentas ni formulario web, escucha en loopback y devuelve 400 cuando falta una clave obligatoria. No se copian observaciones, revisión externa, integrantes, plazos legales o bases contractuales del otro grupo. El plazo propuesto de 30 días se justifica por evaluación y correcciones del ejercicio.
+
+Se conservan ocho riesgos propios. R3 diferencia la recopilación innecesaria del teléfono de la divulgación masiva ya valorada en R1: probabilidad alta e impacto bajo, nivel medio según la matriz del curso. Tras eliminar el campo se estima bajo. Los riesgos altos actuales son R1, R2, R4, R5 y R6. La propuesta C02 concreta AES-GCM y una prueba de rechazo de datos cifrados alterados; no está implementada.
