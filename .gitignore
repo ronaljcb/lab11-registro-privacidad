@@ -38,11 +38,7 @@ yarn-error.log*
 /test-results/
 /playwright-report/
 /tmp/
-*.aux
 *.log
-*.out
-*.toc
-*.synctex.gz
 *.db
 *.sqlite
 
@@ -53,8 +49,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-.vercel
-!.env.example
-/docs/informe-latex/main.pdf
 .venv/
 __pycache__/

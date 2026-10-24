@@ -84,3 +84,27 @@ El comando elimina sesiones vencidas y sus registros por cascada. No elimina cop
 
 El proyecto está preparado para Vercel con la integración Neon del plan gratuito. Configura `DATABASE_URL` en el servidor, aplica la migración y despliega con el directorio raíz de este repositorio. No subas `.env.local`, `.vercel`, archivos `.db`, `.sqlite` ni volcados de la base.
 
+## Arquitectura de la demostración
+
+El frontend se sirve desde Vercel. Los Route Handlers de Next.js validan las solicitudes y consultan PostgreSQL en Neon mediante una credencial exclusiva del servidor. Este flujo corresponde a la demostración; la DPIA del Word evalúa el backend Flask local.
+
+### Acceso y validación
+
+GET `/api/personas` genera una cookie aleatoria de 32 bytes cuando no existe una sesión vigente. La base conserva su huella SHA-256. Altas, lecturas y eliminaciones se filtran por huella y vencimiento; la API no devuelve la huella. El token no acredita identidad ni impide el acceso a quien use el mismo navegador o copie la cookie.
+
+Las respuestas llevan `Cache-Control: private, no-store`. Las mutaciones requieren el mismo origen. POST exige JSON y un cuerpo de hasta 2 KB. Zod valida en interfaz y servidor. PostgreSQL conserva los límites de 20 mutaciones por minuto y 50 registros por sesión entre instancias de Vercel.
+
+### Modelo de datos
+
+- `lab11_sessions`: huella de sesión, creación, vencimiento y contador de solicitudes.
+- `lab11_personas`: UUID, relación con sesión, nombres, apellidos, correo, teléfono opcional y fechas.
+- Unicidad por `(owner_hash, email)`, sin comprobación global que revele correos de otras sesiones.
+- Transacción y bloqueo por sesión para aplicar la cuota de altas.
+- Migración versionada en `database/001_initial.sql`; no se ejecuta DDL al atender solicitudes.
+
+### Límites de uso
+
+La limpieza manual elimina físicamente sesiones vencidas y sus registros por cascada. No elimina copias del proveedor. La caducidad del acceso y el borrado físico son operaciones distintas.
+
+No hay autenticación de personas, envío de mensajes, exportación pública ni analítica. El servidor limita el formato de contactos de prueba, pero no puede verificar que los nombres sean inventados. La demostración utiliza exclusivamente datos ficticios.
+

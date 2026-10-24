@@ -6,7 +6,7 @@ La DPIA evalúa el **backend mínimo local de Flask y SQLite** de [laboratorio-m
 
 ## Entrega
 
-- [Ficha DPIA en Word con el diseño original](docs/DPIA_Laboratorio_11.docx)
+- [Ficha DPIA en Word con el diseño original](public/documentos/dpia-laboratorio-11.docx)
 - [Backend evaluado e instrucciones](laboratorio-minimo/README.md)
 - [Evidencia reproducible](laboratorio-minimo/evidencias.json)
 - [Checklist propio basado en la presentación](docs/checklist.md)
@@ -36,4 +36,4 @@ El backend actual es un ejercicio local con datos inventados. Un lanzamiento con
 
 La [aplicación publicada](https://lab11-registro-privacidad.vercel.app) utiliza Next.js, shadcn/ui, Vercel y Neon. Tiene controles adicionales y se mantiene como demostración opcional. Sus controles no se usan para valorar el backend mínimo. [Instrucciones de esta versión](docs/demostracion-complementaria.md).
 
-El PDF y la fuente LaTeX de la primera versión documentan esa demostración. Se conservan como material anterior; la entrega vigente es el Word enlazado arriba.
+La entrega vigente es la ficha en Word enlazada arriba. La documentación de ejecución y arquitectura de la web está reunida en la guía de la demostración complementaria.

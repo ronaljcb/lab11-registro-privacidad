@@ -2,7 +2,7 @@
 
 Matriz propia basada en las diapositivas 20–29 de L11. Evalúa exclusivamente `laboratorio-minimo`. Las restricciones C01–C08 se desarrollan por escrito.
 
-La [comprobación con la PPT](comprobacion-ppt.md) detalla el cotejo. La ficha tiene respuestas en español y conserva las preguntas originales en inglés. El nivel de riesgo se asigna con la matriz de la diapositiva 25, no con intervalos del producto: media × alto y alta × medio son altos; baja × alto es medio.
+La ficha tiene respuestas en español y conserva las preguntas originales en inglés. El nivel de riesgo se asigna con la matriz de la diapositiva 25: media × alto y alta × medio son altos; baja × alto es medio. El producto numérico se muestra como referencia.
 
 | Elemento del encargo | Evidencia | Resultado |
 | --- | --- | --- |
@@ -37,3 +37,7 @@ La [comprobación con la PPT](comprobacion-ppt.md) detalla el cotejo. La ficha t
 | Auditoría dedicada y procedimiento de incidentes | Ausentes | C08 |
 
 La evidencia de `laboratorio-minimo/evidencias.json` observa brechas; no certifica las restricciones propuestas. Para reproducirla, ejecutar verificar.py según el README de esa carpeta. Se usa una base temporal y datos inventados.
+
+El riesgo inicial es alto en R1, R2, R4, R5 y R6, y medio en R3, R7 y R8. Tras aplicar las restricciones en papel, R1 y R2 quedan en medio y los demás en bajo. Las ocho medidas están aprobadas para el diseño; su implementación y comprobación son condiciones para admitir datos reales.
+
+El checklist organiza la evidencia de la entrega. El contenido del checklist oficial enlazado en la diapositiva 20 no pudo consultarse. Los comentarios externos recibidos se registran en el formulario de revisión cruzada; este documento no acredita una revisión externa realizada.
