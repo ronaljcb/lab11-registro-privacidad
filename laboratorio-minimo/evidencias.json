@@ -1,0 +1,12 @@
+{
+  "four_synthetic_records_created": true,
+  "anonymous_second_client_reads_all_contacts": true,
+  "telephone_returned_unmasked": true,
+  "telephone_optional": true,
+  "duplicate_email_accepted": true,
+  "malformed_email_accepted": true,
+  "sqlite_contact_values_readable": true,
+  "deletion_and_rectification_routes_absent": true,
+  "schema_has_no_expiry_or_consent_fields": true,
+  "bound_sql_keeps_injection_like_input_literal": true
+}

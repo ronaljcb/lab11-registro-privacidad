@@ -56,3 +56,5 @@ next-env.d.ts
 .vercel
 !.env.example
 /docs/informe-latex/main.pdf
+.venv/
+__pycache__/
